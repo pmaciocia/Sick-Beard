@@ -174,6 +174,10 @@ Returns a byte-string retrieved from the url provider.
 """
 
     opener = urllib2.build_opener()
+
+    # FIX
+    opener.add_handler(urllib2.ProxyHandler({'http':'http://192.168.1.11:8118', 'https':'http://192.168.1.11:8118'}))
+
     opener.addheaders = [('User-Agent', USER_AGENT), ('Accept-Encoding', 'gzip,deflate')]
     for cur_header in headers:
         opener.addheaders.append(cur_header)

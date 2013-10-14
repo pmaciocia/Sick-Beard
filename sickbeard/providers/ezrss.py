@@ -43,6 +43,7 @@ class EZRSSProvider(generic.TorrentProvider):
         self.cache = EZRSSCache(self)
 
         self.url = 'https://www.ezrss.it/'
+        #self.url = 'http://www.ezrss.it/'
 
     def isEnabled(self):
         return sickbeard.EZRSS
