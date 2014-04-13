@@ -297,8 +297,13 @@ class KATProvider(generic.TorrentProvider):
 
     def getURL(self, url, headers=None):
 
+        proxies = {
+            "http": "http://192.168.1.11:8118",
+            "https": "http://192.168.1.11:8118",
+        }
+
         try:
-            r = requests.get(url)
+            r = requests.get(url, proxies=proxies)
         except (requests.exceptions.ConnectionError, requests.exceptions.HTTPError), e:
             logger.log(u"Error loading "+self.name+" URL: " + str(sys.exc_info()) + " - " + ex(e), logger.ERROR)
             return None
